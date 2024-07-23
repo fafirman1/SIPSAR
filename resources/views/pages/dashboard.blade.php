@@ -54,7 +54,7 @@
                     style="background-image: url('{{ asset('img/unsplash/andre-benz-1214056-unsplash.jpg') }}'); height: 400px;">
                     <div class="hero-inner text-center text-white d-flex flex-column justify-content-center align-items-center h-100">
                         <h2>Selamat Datang Di Dashboard Admin SMP IT Poncowarno</h2>
-                        <p class="lead">Anda telah berhasil mendaftar ke sistem kami. Selanjutnya, Anda bisa masuk ke dashboard dengan akun Anda.</p>
+                        <p class="lead">Anda telah berhasil masuk ke sistem kami. Selanjutnya, Anda bisa masuk mengelola data sekolah disini.</p>
                     </div>
                 </div>
                 <div class="section-body">
