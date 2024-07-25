@@ -35,13 +35,13 @@ class PengumumanController extends Controller
             // Simpan file di folder public/pengumuman dan ambil nama file
             $filename = $file->getClientOriginalName();
             $file->storeAs('public/pengumuman/', $filename);
-            // Simpan nama file dalam validatedData
-            $validatedData['lampiran'] = $filename;
+            // Simpan URL lengkap dari file dalam validatedData
+            $validatedData['lampiran'] = 'https://www.sipsar.my.id/storage/pengumuman/' . $filename;
         }
 
         Pengumuman::create($validatedData);
 
-        return redirect()->route('pengumuman.index')->with('success', 'Teacher created successfully');
+        return redirect()->route('pengumuman.index')->with('success', 'Pengumuman created successfully');
     }
 
     public function show(Pengumuman $pengumuman)
@@ -58,16 +58,19 @@ class PengumumanController extends Controller
 
     public function destroy($id)
     {
-        $pengumumans = Pengumuman::find($id);
-        if ($pengumumans) {
-            // Delete photo if exists
-            if ($pengumumans->lampiran) {
-                Storage::delete('public/pengumuman/' . $pengumumans->lampiran);
+        $pengumuman = Pengumuman::find($id);
+        if ($pengumuman) {
+            // Delete lampiran if exists
+            if ($pengumuman->lampiran) {
+                // Extract the filename from the URL
+                $filename = basename($pengumuman->lampiran);
+                Storage::delete('public/pengumuman/' . $filename);
             }
-            $pengumumans->delete();
+            $pengumuman->delete();
             return redirect()->route('pengumuman.index')->with('success', 'Data deleted successfully');
         } else {
             return redirect()->route('pengumuman.index')->with('error', 'Data not found');
         }
     }
 }
+

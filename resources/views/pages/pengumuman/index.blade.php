@@ -46,7 +46,7 @@
                                                     <span class="expandable" id="expandable-{{ $loop->index }}" onclick="toggleContent({{ $loop->index }})">Read more</span>
                                                     <br>
                                                     <br>
-                                                    <a href="{{ Storage::url('public/pengumuman/' . $pengumuman->lampiran) }}" class="card-link">Unduh Lampiran</a>
+                                                    <a href="{{$pengumuman->lampiran}}" class="card-link">Unduh Lampiran</a>
                                                 </div>
                                                 <div class="card-footer text-right">
                                                     <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}" method="POST" class="ml-2">
